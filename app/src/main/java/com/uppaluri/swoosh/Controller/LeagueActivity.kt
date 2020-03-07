@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.uppaluri.swoosh.Model.Player
 import com.uppaluri.swoosh.R
 import com.uppaluri.swoosh.Utilities.EXTRA_PLAYER
@@ -13,10 +14,22 @@ class LeagueActivity : BaseActivity() {
 
     var player = Player("","")
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState?.putParcelable(EXTRA_PLAYER,player)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_league)
     }
+
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        player = savedInstanceState.getParcelable(EXTRA_PLAYER)!!
+    }
+
 
     fun leagueNextClicked(view: View) {
 
