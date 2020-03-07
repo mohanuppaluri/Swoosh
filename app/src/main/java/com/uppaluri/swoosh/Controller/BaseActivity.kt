@@ -1,4 +1,4 @@
-package com.uppaluri.swoosh
+package com.uppaluri.swoosh.Controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
